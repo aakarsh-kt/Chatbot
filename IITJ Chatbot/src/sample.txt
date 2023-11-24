@@ -1,0 +1,15 @@
+<script>
+        function submitQuery() {
+            const queryText = document.getElementById("query-text").value;
+
+            fetch(/query?text=${encodeURIComponent(queryText)})
+                .then(response => response.text())
+                .then(data => {
+                    const answerSection = document.getElementById("answer-section");
+                    answerSection.innerHTML = <p>Answer: ${data}</p>;
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+        }
+    </script>
